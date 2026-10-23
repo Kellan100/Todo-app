@@ -1,0 +1,79 @@
+import { useState } from "react";
+import Todo from "./routes/todo/todo";
+import Footer from "./components/Footer";
+// import Header from "./components/Header";
+import Home from "./routes/home/home";
+
+
+const todos = [
+  {
+    id: 1,
+    title: "Buy groceries",
+    completed: false,
+    createdAt: "2026-10-09T10:00:00Z",
+  },
+  {
+    id: 2,
+    title: "Walk the dog",
+    completed: true,
+    createdAt: "2026-10-09T11:30:00Z",
+  },
+];
+
+function App() {
+  const [tasks, setTasks] = useState(todos);
+  const [showApp, setShowApp] = useState(false);
+
+  return (
+    <>
+      <main className="flex flex-col min-h-screen w-screen">
+        {/* <Header /> */}
+
+        <div>
+      {!showApp ? (
+        <Home onOpenApp={() => setShowApp(true)} />
+      ) : (
+        <div className="min-h-screen bg-slate-950">
+          {/* Back button to return to the landing page */}
+          <div className="max-w-4xl mx-auto pt-4 px-4">
+            <button 
+              onClick={() => setShowApp(false)} 
+              className="text-sm font-medium text-emerald-400 hover:text-emerald-300 flex items-center gap-2 bg-emerald-950/60 border border-emerald-900 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+            >
+              ← Back to Home
+            </button>
+          </div>
+
+          {/* Your actual working Todo App */}
+          <Todo tasks={tasks} setTasks={setTasks} />
+        </div>
+      )}
+    </div>
+
+        {/* <Todo tasks={tasks} setTasks={setTasks}/> */}
+
+        <Footer tasks={tasks}/>
+      </main>
+    </>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+<div className="max-w-4xl mx-auto pt-4 px-4 w-full">
+        <button 
+          onClick={() => setShowApp(false)} 
+          className="text-sm font-medium text-emerald-400 hover:text-emerald-300 flex items-center gap-2 bg-emerald-950 border border-emerald-900 px-3 py-1.5 mb-3 rounded-lg cursor-pointer"
+        >
+         <IoIosArrowRoundBack className="text-xl"/> Back to Home
+        </button>
+      </div>
+
+      <div className="">
+        <Todo tasks={tasks} setTasks={setTasks} />
+      </div>
