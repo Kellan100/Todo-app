@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Todo from "./routes/todo/todo";
+import Todo from "./routes/todo/Todo";
 import Footer from "./components/Footer";
-import Home from "./routes/home/home";
+import Home from "./routes/home/Home";
 // import { IoIosArrowRoundBack } from "react-icons/io";
 import { Route, Routes } from "react-router";
 import NavBar from "./components/NavBar";
